@@ -1,0 +1,25 @@
+{
+  "name": "xcreep",
+  "version": "1.0.0",
+  "description": "Project xCreep",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/09abhishek/xCreep.git"
+  },
+  "author": "Abhishek Gautam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/09abhishek/xCreep/issues"
+  },
+  "homepage": "https://github.com/09abhishek/xCreep#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9"
+  }
+}
