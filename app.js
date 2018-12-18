@@ -10,21 +10,22 @@ const bodyparser = require('body-parser');
 
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 const server = http.createServer(app);
 
 app.use(bodyparser.urlencoded({ extended: true}));
+
+// for serving staitic files like html/js/css.
 app.use(express.static(path.join(rootDir, 'public')));
 
-app.use('/admin', adminRoutes);
+app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
     //res.status(404).send('</h1>Page not found</h1>');
     res.status(404).sendFile(path.join(rootDir, 'views', '404.html'));
-    
     // res.end();
 });
 
