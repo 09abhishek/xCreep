@@ -1,54 +1,28 @@
-// var cmd=require('node-cmd');
- 
-//     cmd.get(
-//         'pwd',
-//         function(err, data, stderr){
-//             console.log('the current working dir is : ',data)
-//         }
-//     );
- 
-//     cmd.run('touch example.created.file');
- 
-//     cmd.get(
-//         'ls',
-//         function(err, data, stderr){
-//             console.log('the current dir contains these files :\n\n',data)
-//         }
-//     );
- 
-//     cmd.get(
-//         `
-//             git clone https://github.com/RIAEvangelist/node-cmd.git
-//             cd node-cmd
-//             ls
-//         `,
-//         function(err, data, stderr){
-//             if (!err) {
-//                console.log('the node-cmd cloned dir contains these files :\n\n',data)
-//             } else {
-//                console.log('error', err)
-//             }
- 
-//         }
-//     );
+const interfaceIP = require('./ip');
 
-const nodeCmd = require('node-cmd');
-var exec = require('child_process').exec;
+var cmd = require('node-cmd');
 
-const gotopath = "cd C:\\Users\\Admin\\hfci_wlcd\\src\\web_gui\\frontend\\angularjs"
+console.log(interfaceIP);
 
-//console.log(exec(dir));
+const PORT = '8080';
+const WIFI = interfaceIP[0];
 
-nodeCmd.get('dir', (err, data, stderr) => {
-console.log(data);
-console.log(err);
-});
+hostip = WIFI.split(':');
 
-    // nodeCmd.get(
-    //     'pwd',
-    //     function(err, data, stderr){
-    //         console.log('the current working dir is : ',data)
-    //     }
-    // );
 
-    
+
+console.log(hostip);
+
+const command = `E: & cd E:\\Codes\\WebstormProjectsWorkspace\\xCreep & ng serve --host ${hostip[1]} --port ${PORT} --open`;
+cmd.get(
+    command,
+    function (err, data, stderr) {
+        if (!err) {
+            console.log('Command executed! :\n\n', data)
+        } else {
+            console.log('Folder path seems to be incorrect', err)
+        }
+
+
+    }
+);

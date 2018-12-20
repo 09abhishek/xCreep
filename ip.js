@@ -28,7 +28,9 @@ Object.keys(ifaces).forEach(function (ifname) {
     });
 });
 
- console.log(ipArray);
+ //console.log(ipArray);
+
+module.exports = ipArray;
 
 
 // var os = require('os');
