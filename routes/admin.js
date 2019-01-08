@@ -14,10 +14,14 @@ router.get('/add-product', (req, res, next) => {
 });
 
 router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
     const item = req.body;
     products.push(item);
-    res.redirect('/');
+    res.render('add-product', { pageTitle: 'Add Product', path: '/admin/add-product' });
+    
+    // console.log(req.body);
+    // const item = req.body;
+    // products.push(item);
+    // res.redirect('/');
 });
 
 // module.exports = router;
