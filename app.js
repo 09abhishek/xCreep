@@ -14,8 +14,9 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const errorController = require('./controllers/error');
 
 const server = http.createServer(app);
 
@@ -24,13 +25,9 @@ app.use(bodyparser.urlencoded({ extended: true}));
 // for serving staitic files like html/js/css.
 app.use(express.static(path.join(rootDir, 'public')));
 
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-    //res.status(404).send('</h1>Page not found</h1>');
-    res.status(404).render('404', {pageTitle: 'Page not found', path: ''});
-    // res.end();
-});
+app.use(errorController.get404);
 
 server.listen(3000);
