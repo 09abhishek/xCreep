@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Hello Promise!
+        </h1>
+    </header>
+    <script>
+       const p1 = new Promise((resolve, reject) => {
+            setTimeout((name) => {
+                resolve(data);
+            },1000, data = ['abhi', 'golu', 'moni', 'deenu']);
+        });
+        
+        const extractFirstName = (p1data) => {
+            return new Promise((resolve, reject) => {
+                data = p1data;
+                    setInterval((data) => {
+                        resolve(p1data[0]);
+                        
+                    },2000, ...p1data);
+        });
+
+        }
+
+        const firstLetter = (data) => {
+            return new Promise((resolve, reject) => {
+                    setTimeout((data) => {
+                         resolve(data[0]);   
+                    },3000, data);
+            });
+        }
+    
+        //generic promise consume.
+        // p1.then((data)=> {
+        //     console.log(data);
+        //     return extractFirstName(data);
+        // }).then((data) => { 
+        //     console.log(data);
+        //     return firstLetter(data);
+        // }).then((data) => {
+        //     console.log(data);
+            
+        // }) 
+        // .catch((err) => {
+        //     console.log('error encountered');
+        // });
+
+
+        // now using async await//
+
+        async function runPromise() {
+            const p1Result = await p1;
+            console.log(p1Result);
+            const extractFirstNameResult = await extractFirstName(p1Result);
+            console.log(extractFirstNameResult);            
+            const firstLetterResult = await firstLetter(extractFirstNameResult);
+            console.log(firstLetterResult);
+
+            return extractFirstNameResult;
+        }
+
+        // this async function will keep on running in the background.
+        runPromise().then((data) => {
+            console.log('return of runPromise\'s promise',  data);
+        });
+
+
+        const arr = ['abhi', 'golu', 'neha', 'nishi'];
+
+
+        function loopOverTheNames(arr, callbackfn) {
+            const finalArray = [];
+            arr.forEach(element => {
+               finalArray.push(addSuffixInTheNames(element)); 
+            });
+            return finalArray;
+        } 
+
+        function addSuffixInTheNames(names) {
+            return names + ' Gautam';
+        }
+        
+        const fn = loopOverTheNames(arr, addSuffixInTheNames);
+        console.log(fn);
+        
+
+
+
+
+        </script>
+</body>
+</html>

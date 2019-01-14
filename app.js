@@ -11,6 +11,8 @@ const bodyparser = require('body-parser');
 const app = express();
 
 app.set('view engine', 'ejs');
+
+//setting views folder for the ejs engine, for serving the ejs file.
 app.set('views', 'views');
 
 
@@ -26,6 +28,7 @@ app.use(bodyparser.urlencoded({ extended: true}));
 app.use(express.static(path.join(rootDir, 'public')));
 
 app.use('/admin', adminRoutes);
+
 app.use(shopRoutes);
 
 app.use(errorController.get404);
