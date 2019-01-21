@@ -6,7 +6,7 @@ const http = require('http');
 // 3rd party module.
 const express = require('express');
 const bodyparser = require('body-parser');
-
+const sequelize = require('./utils/database');
 
 const app = express();
 
@@ -32,5 +32,11 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
+sequelize.sync().then(result => {
+    // console.log(result);
+    
+    server.listen(3000);
 
-server.listen(3000);
+}).catch(err => {
+    console.log(err);
+});

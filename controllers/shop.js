@@ -23,12 +23,15 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('shop/index', {
-      prods: products,
-      pageTitle: 'Shop',
-      path: '/'
-    });
+ Product.findAll({}).then(products => {
+  res.render('shop/index', {
+    prods: products,
+    pageTitle: 'Shop',
+    path: '/'
+ }).catch(err => {
+   console.log(err);
+ })
+
   });
 };
 
